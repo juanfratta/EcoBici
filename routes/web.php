@@ -18,3 +18,27 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/productos', 'ProductosController@listado');
+
+
+
+
+/**
+ * Mostrar todos los productos
+ */
+
+ 
+/**
+ * Agregar producto
+ */
+Route::post('/producto', function (Request $request) {
+    //
+});
+ 
+/**
+ * Eliminar producto
+ */
+Route::delete('/producto/{id}', function ($id) {
+    //
+});
