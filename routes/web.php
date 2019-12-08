@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
+use App\Producto;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,25 +23,50 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/productos', 'ProductosController@listado');
+//Route::get('/productos', 'ProductosController@listado');
 
 
 
+
+Route::get('/productos', function () {
+    return view('productos');
+});
 
 /**
- * Mostrar todos los productos
- */
-
- 
-/**
- * Agregar producto
+ * Add A New Task
  */
 Route::post('/producto', function (Request $request) {
-    //
+
+    $validator = Validator::make($request::all(), [
+        'nombre' => ['required', 'string', 'max:255'],
+        'precio_venta' => ['required', 'numeric'],
+        'precio_compra' => ['required', 'numeric'],
+        'stock' => ['required', 'string', 'max:255'],
+        'descripcion' => ['required', 'string', 'max:255'],
+    ]);
+    if ($validator->fails()){
+        return redirect('/productos')
+        ->whitInput()
+        ->withErrors($validator);
+    }
+
+    $producto = new Producto;
+    $producto->nombre = $request->nombre;
+    $producto->precio_venta = $request->precio_venta;
+    $producto->precio_compra = $request->precio_compra;
+    $producto->stock = $request->stock;
+    $producto->descripcion = $request->descripcion;
+
+    $producto->save();
+
+    return redirect('/productos');
 });
- 
+
+
+
+
 /**
- * Eliminar producto
+ * Delete An Existing Task
  */
 Route::delete('/producto/{id}', function ($id) {
     //
