@@ -16,7 +16,7 @@ class CreateProductosTable extends Migration
         Schema::create('Productos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string('imagen');
+            //$table->string('imagen');
             $table->decimal('precio_venta', 2, 0);
             $table->decimal('precio_compra', 50, 0);
             $table->string('stock');

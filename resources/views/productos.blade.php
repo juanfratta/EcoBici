@@ -2,9 +2,8 @@
 
 @section('content')
 
-@include('common.errors')
 
-<form action="{{url('producto')}}" method="POST">
+<form action="{{url('productos')}}" method="POST">
     {{ csrf_field() }}
 
     <div class="form-group">
