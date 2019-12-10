@@ -25,13 +25,43 @@ public function crear(Request $request){
 }
 
 public function listado(){
-  //  $productos = Producto::all();
-    //dd($productos);
+    $productos = Producto::all();
+    $vac = compact("productos");
+    return view("productos",$vac );
+}
 
-    return view("productos");
+public function detalle($id){
+    $producto = Producto::find($id);
+    $vac = compact("producto");
+    //esto crea la vista directamente.
+    return view('producto',$vac);
+}
+
+public function editar($id){
+        $producto = Producto::find($id);
+        $vac = compact("producto");
+        return view('editarProducto',$vac);
 }
 
 
+public function update($id){
+        $producto = Producto::find($id);
+        $producto->nombre = $request['nombre'];
+        $producto->precio_venta = $request['precio_venta'];
+        $producto->precio_compra =$request['precio_compra'];
+        $producto->stock = $request['stock'];
+        $producto->descripcion = $request['descripcion'];
+        $producto->save();
+        return redirect("/productos");
+    }
+
+    public function borrar(Request $request){
+        $id = $request["id"];
+        $producto = Producto::find($id);
+        $producto->delete();
+
+        return redirect("/productos");
+    }
 
 
 

@@ -24,11 +24,28 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/productos', function(){
-    return view("productos");
+Route::get('/nuevoproducto', function(){
+  return view("nuevoproducto");
 });
+Route::post('/nuevoproducto', 'ProductosController@crear');
+//update
+Route::post('/actualizarProducto/{id}', 'ProductosController@actualizar');
+Route::post('/guardarProducto', 'ProductosController@guardar');
+Route::get('/producto/{id}', 'ProductosController@detalle');
+Route::get('/editarProducto/{id}', 'ProductosController@editar');
+Route::get('/update/{id}', 'ProductosController@update');
+Route::post('/borrarProducto', 'ProductosController@borrar');
 
-Route::post('/productos', 'ProductosController@crear');
+
+
+Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar');
+
+
+
+
+
+
+Route::get('/productos', 'ProductosController@listado');
 
 // Route Jose Luis
  Route::get("/inicio", function (){

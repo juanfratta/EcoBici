@@ -17,8 +17,8 @@ class CreateProductosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             //$table->string('imagen');
-            $table->decimal('precio_venta', 2, 0);
-            $table->decimal('precio_compra', 50, 0);
+            $table->decimal('precio_venta', 20, 0);
+            $table->decimal('precio_compra', 20, 0);
             $table->string('stock');
             $table->string('descripcion');
             $table->timestamps();

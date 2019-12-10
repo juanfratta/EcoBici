@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-
+<div class="container-fluid">
 
 <form action="{{url('nuevoproducto')}}" method="POST">
     {{ csrf_field() }}
@@ -31,3 +31,6 @@
         Nuevo Producto
     </button>
 </form>
+
+</div>
+@endsection

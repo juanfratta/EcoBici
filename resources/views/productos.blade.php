@@ -1,65 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container-fluid">
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio de venta</th>
+        <th scope="col">Precio de compra</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Accion</th>
 
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+        @forelse ($productos as $producto)
+        <td>{{$producto["nombre"]}}</td>
+        <td>{{$producto["precio_compra"]}}</td>
+        <td>{{$producto["precio_venta"]}}</td>
+        <td>{{$producto["stock"]}}</td>
+        <td>{{$producto["descripcion"]}}</td>
+        <td><!--{{$producto["imagen"]}}--> Nada aun</td>
+        <td>
+        <a href="producto/{{ $producto->id }}"><span class="label label-info">Ver</span></a>
+		 <a href="editarProducto/{{ $producto->id }}"><span class="label label-success">Editar</span></a>
+        </td>
+        @empty
+        <td>Sin especificar</td>
+        @endforelse
     </tbody>
   </table>
+</div>
+  @endsection
+
