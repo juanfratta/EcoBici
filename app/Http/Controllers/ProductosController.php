@@ -15,17 +15,21 @@ class ProductosController extends Controller
 //Siempre de un form reciben request
 public function crear(Request $request){
     $nuevoProducto = new Producto();
-
     $nuevoProducto->nombre = $request['nombre'];
     $nuevoProducto->precio_venta = $request['precio_venta'];
     $nuevoProducto->precio_compra =$request['precio_compra'];
     $nuevoProducto->stock = $request['stock'];
     $nuevoProducto->descripcion = $request['descripcion'];
     $nuevoProducto->save();
-
-    return redirect("/productos");
+    return redirect("/nuevoproducto");
 }
 
+public function listado(){
+  //  $productos = Producto::all();
+    //dd($productos);
+
+    return view("productos");
+}
 
 
 

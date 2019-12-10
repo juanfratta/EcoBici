@@ -1,33 +1,65 @@
-@extends('layouts.template')
+@extends('layouts.app')
 
 @section('content')
 
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
 
-<form action="{{url('productos')}}" method="POST">
-    {{ csrf_field() }}
-
-    <div class="form-group">
-        <label for="nombre" class="control-label">Nombre </label>
-        <input type="text" name="nombre" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="precio_venta" class="control-label">Precio compra </label>
-            <input type="number" name="precio_venta" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="precio_compra" class="control-label">Precio venta </label>
-            <input type="number" name="precio_compra" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="stock" class="control-label">Stock</label>
-            <input type="text" name="stock" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="descripcion" class="control-label">Descripcion </label>
-            <input type="text" name="descripcion" class="form-control">
-    </div>
-
-    <button type="submit" class="btn btn-default">
-        Nuevo Producto
-    </button>
-</form>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>

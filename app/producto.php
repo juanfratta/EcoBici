@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class producto extends Model
 {
 
-    public $table= "productos";
-    public $guarded =[];
+    protected $fillable = ['nombre', 'precio_venta', 'precio_compra','stock','descripcion',];
+    //public $table= "productos";
+   // public $guarded =[];
 }
