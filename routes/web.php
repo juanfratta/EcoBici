@@ -24,9 +24,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/nuevoproducto', function(){
-    return view("nuevoproducto");
+Route::get('/productos', function(){
+    return view("productos");
 });
-Route::post('/nuevoproducto', 'ProductosController@crear');
 
-Route::get('/productos', 'ProductosController@listado');
+Route::post('/productos', 'ProductosController@crear');
+
+// Route Jose Luis
+ Route::get("/inicio", function (){
+   return view('inicio');
+ });
+
+// Ruta al FAQ
+Route::get("/FAQ",function(){
+   return view("FAQ");
+});
