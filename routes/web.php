@@ -30,3 +30,12 @@ Route::get('/productos', function(){
 
 Route::post('/productos', 'ProductosController@crear');
 
+// Route Jose Luis
+ Route::get("/inicio", function (){
+   return view('inicio');
+ });
+
+// Ruta al FAQ
+Route::get("/FAQ",function(){
+   return view("FAQ");
+});
