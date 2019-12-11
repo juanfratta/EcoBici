@@ -23,7 +23,7 @@
         <td>{{$producto["precio_venta"]}}</td>
         <td>{{$producto["stock"]}}</td>
         <td>{{$producto["descripcion"]}}</td>
-        <td><!--{{$producto["imagen"]}}--> Nada aun</td>
+        <td>{{$producto["imagen"]}}</td>
         <td>
         <a href="producto/{{ $producto->id }}"><span class="label label-info">Ver</span></a>
 		 <a href="editarProducto/{{ $producto->id }}"><span class="label label-success">Editar</span></a>

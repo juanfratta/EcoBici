@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-        <form action="update/{{'$producto->id'}}" method="POST">
+        <form action="update/{{'$producto->id'}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -26,6 +26,10 @@
             <div class="form-group">
                     <label for="descripcion" class="control-label">Descripcion </label>
                     <input value="{{$producto->descripcion}}" type="text" name="descripcion" class="form-control">
+            </div>
+            <div class="">
+                    <label >Foto: </label>
+                    <input type="file" name="imagen">
             </div>
             <button type="submit" class="btn btn-default">
                 Confirmar cambios

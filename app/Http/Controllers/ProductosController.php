@@ -14,7 +14,31 @@ class ProductosController extends Controller
 
 //Siempre de un form reciben request
 public function crear(Request $request){
+
+    $reglas =[
+        "nombre"=>"required|string|min:5",
+        "precio_compra"=>"required|numeric|min:0",
+        "precio_venta"=>"required|numeric|min:0",
+        "stock"=>"required|numeric",
+        "descripcion"=>"required|string|max:256",
+        "imagen"=>"file"
+
+    ];
+
+    $mensajes =[
+        "string"=>"El campo :atribute debe ser un texto",
+        "min"=>"El campo :atribute tiene un minimo de :min",
+        "max"=>"El campo :atribute tiene un maximo de :max",
+        "required"=>"El campo :atribute no puede quedar en blanco"
+    ];
+
+    $this->validate($request, $reglas, $mensajes);
+
+    $ruta = $request->file("imagen")->store("public");
+    $nombreArchivo =basename($ruta);
+
     $nuevoProducto = new Producto();
+    $nuevoProducto->imagen =$nombreArchivo;
     $nuevoProducto->nombre = $request['nombre'];
     $nuevoProducto->precio_venta = $request['precio_venta'];
     $nuevoProducto->precio_compra =$request['precio_compra'];
