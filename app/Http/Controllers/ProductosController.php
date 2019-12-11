@@ -14,20 +14,78 @@ class ProductosController extends Controller
 
 //Siempre de un form reciben request
 public function crear(Request $request){
-    $nuevoProducto = new Producto();
 
+    $reglas =[
+        "nombre"=>"required|string|min:5",
+        "precio_compra"=>"required|numeric|min:0",
+        "precio_venta"=>"required|numeric|min:0",
+        "stock"=>"required|numeric",
+        "descripcion"=>"required|string|max:256",
+        "imagen"=>"file"
+
+    ];
+
+    $mensajes =[
+        "string"=>"El campo :atribute debe ser un texto",
+        "min"=>"El campo :atribute tiene un minimo de :min",
+        "max"=>"El campo :atribute tiene un maximo de :max",
+        "required"=>"El campo :atribute no puede quedar en blanco"
+    ];
+
+    $this->validate($request, $reglas, $mensajes);
+
+    $ruta = $request->file("imagen")->store("public");
+    $nombreArchivo =basename($ruta);
+
+    $nuevoProducto = new Producto();
+    $nuevoProducto->imagen =$nombreArchivo;
     $nuevoProducto->nombre = $request['nombre'];
     $nuevoProducto->precio_venta = $request['precio_venta'];
     $nuevoProducto->precio_compra =$request['precio_compra'];
     $nuevoProducto->stock = $request['stock'];
     $nuevoProducto->descripcion = $request['descripcion'];
     $nuevoProducto->save();
+    return redirect("/nuevoproducto");
+}
 
-    return redirect("/productos");
+public function listado(){
+    $productos = Producto::all();
+    $vac = compact("productos");
+    return view("productos",$vac );
+}
+
+public function detalle($id){
+    $producto = Producto::find($id);
+    $vac = compact("producto");
+    //esto crea la vista directamente.
+    return view('producto',$vac);
+}
+
+public function editar($id){
+        $producto = Producto::find($id);
+        $vac = compact("producto");
+        return view('editarProducto',$vac);
 }
 
 
+public function update($id){
+        $producto = Producto::find($id);
+        $producto->nombre = $request['nombre'];
+        $producto->precio_venta = $request['precio_venta'];
+        $producto->precio_compra =$request['precio_compra'];
+        $producto->stock = $request['stock'];
+        $producto->descripcion = $request['descripcion'];
+        $producto->save();
+        return redirect("/productos");
+    }
 
+    public function borrar(Request $request){
+        $id = $request["id"];
+        $producto = Producto::find($id);
+        $producto->delete();
+
+        return redirect("/productos");
+    }
 
 
 

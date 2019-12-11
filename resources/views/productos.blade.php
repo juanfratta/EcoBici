@@ -1,33 +1,38 @@
-@extends('layouts.template')
+@extends('layouts.app')
 
 @section('content')
+<div class="container-fluid">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio de venta</th>
+        <th scope="col">Precio de compra</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Accion</th>
 
 
-<form action="{{url('productos')}}" method="POST">
-    {{ csrf_field() }}
+      </tr>
+    </thead>
+    <tbody>
+        @forelse ($productos as $producto)
+        <td>{{$producto["nombre"]}}</td>
+        <td>{{$producto["precio_compra"]}}</td>
+        <td>{{$producto["precio_venta"]}}</td>
+        <td>{{$producto["stock"]}}</td>
+        <td>{{$producto["descripcion"]}}</td>
+        <td>{{$producto["imagen"]}}</td>
+        <td>
+        <a href="producto/{{ $producto->id }}"><span class="label label-info">Ver</span></a>
+		 <a href="editarProducto/{{ $producto->id }}"><span class="label label-success">Editar</span></a>
+        </td>
+        @empty
+        <td>Sin especificar</td>
+        @endforelse
+    </tbody>
+  </table>
+</div>
+  @endsection
 
-    <div class="form-group">
-        <label for="nombre" class="control-label">Nombre </label>
-        <input type="text" name="nombre" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="precio_venta" class="control-label">Precio compra </label>
-            <input type="number" name="precio_venta" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="precio_compra" class="control-label">Precio venta </label>
-            <input type="number" name="precio_compra" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="stock" class="control-label">Stock</label>
-            <input type="text" name="stock" class="form-control">
-    </div>
-    <div class="form-group">
-            <label for="descripcion" class="control-label">Descripcion </label>
-            <input type="text" name="descripcion" class="form-control">
-    </div>
-
-    <button type="submit" class="btn btn-default">
-        Nuevo Producto
-    </button>
-</form>
