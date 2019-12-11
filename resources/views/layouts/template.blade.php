@@ -5,22 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ecobici</title>
-    <link rel="stylesheet" href="css/styleTemplate.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
     <link rel="stylesheet" href="css/app.css">
-
     <link rel="stylesheet" href="css/styleTemplate.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
       <!--PRINCIPIO HEADER-->
        <header>
+
          <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 1;">
-         <a class="navbar-brand" style="color:white; font-size:40px;" href="inicio.php">EcoBici</a>
+         <a class="navbar-brand" style="color:white; font-size:40px;" href="/">EcoBici</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -30,15 +23,37 @@
                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="/register">Registrarse</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="/login">Login</a>
-             </li>
-             <li class="nav-item">
                <a class="nav-link" href="/preguntas">FAQs</a>
              </li>
-           </ul>
+             @guest
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                 </li>
+                 @if (Route::has('register'))
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                     </li>
+                 @endif
+             @else
+                 <li class="nav-item dropdown">
+                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="te" aria-expanded="false" v-pre>
+                         {{Auth::user()->name }} <span class="caret"></span>
+                     </a>
+
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                         <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('Logout') }}
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                             @csrf
+                         </form>
+                     </div>
+                 </li>
+             @endguest
+             </ul>
          </div>
        </nav>
        </header>
@@ -74,11 +89,8 @@
        </div>
    </footer>
    <!--Fin del footer-->
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>

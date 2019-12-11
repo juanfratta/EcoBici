@@ -16,7 +16,7 @@ use App\Producto;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Auth::routes();
@@ -32,10 +32,10 @@ Route::post('/productos', 'ProductosController@crear');
 
 // Route Jose Luis
  Route::get("/inicio", function (){
-   return view('inicio');
+   return view('/');
  });
 
 // Ruta al FAQ
-Route::get("/FAQ",function(){
+Route::get("/preguntas",function(){
    return view("FAQ");
 });

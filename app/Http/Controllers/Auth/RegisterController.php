@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -61,12 +61,30 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    //public function up_image (Request $form){
+    //  $file= $form->file('avatar')->store('public');
+    //  $name =basename($file);
+    //   return $name;
+    //}
+
+
+    //public function up_image (Request $form){
+    //  if($form->hasFile('avatar')){
+    //      $file= $form->file('avatar');
+    //        $name = time().$file->getClientOriginalName();
+    //        $file->move(public_path().'/images/', $name);
+    //        return $name;
+    //  }
+    //}
+
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+          ]);
     }
 }

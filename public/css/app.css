@@ -5229,6 +5229,8 @@ input[type=button].btn-block {
 }
 
 .card {
+  margin-top: 10.5%;
+  margin-bottom: 10.5%;
   position: relative;
   display: -webkit-box;
   display: flex;
@@ -9090,7 +9092,7 @@ button.bg-dark:focus {
 
 .pt-4,
 .py-4 {
-  padding-top: 5% !important;
+  padding-top: 0% !important;
 }
 
 .pr-4,
@@ -9100,7 +9102,7 @@ button.bg-dark:focus {
 
 .pb-4,
 .py-4 {
-  padding-bottom: 5% !important;
+  padding-bottom: 0% !important;
 }
 
 .pl-4,
