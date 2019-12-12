@@ -47,6 +47,7 @@ Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar');
 
 Route::get('/productos', 'ProductosController@listado');
 
+// vistas
 
  Route::get("/", function (){
    return view('inicio');
