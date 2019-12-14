@@ -46,6 +46,8 @@ Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar');
 
 
 Route::get('/productos', 'ProductosController@listado');
+Route::post('/productos', 'ProductosController@listado');
+
 
 // vistas
 

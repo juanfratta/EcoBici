@@ -21,15 +21,17 @@ public function crear(Request $request){
         "precio_venta"=>"required|numeric|min:0",
         "stock"=>"required|numeric",
         "descripcion"=>"required|string|max:256",
-        "imagen"=>"file"
+        "imagen"=>"required|file"
+
 
     ];
 
     $mensajes =[
-        "string"=>"El campo :atribute debe ser un texto",
-        "min"=>"El campo :atribute tiene un minimo de :min",
-        "max"=>"El campo :atribute tiene un maximo de :max",
-        "required"=>"El campo :atribute no puede quedar en blanco"
+        "string"=>"El campo :attribute debe ser un texto",
+        "min"=>"El campo :attribute tiene un minimo de :min",
+        "max"=>"El campo :attribute tiene un maximo de :max",
+        "required"=>"El campo :attribute no puede quedar en blanco",
+        "file"=>"El campo :attribute debe ser un archivo de foto"
     ];
 
     $this->validate($request, $reglas, $mensajes);

@@ -46,7 +46,9 @@ header .bg-light {
    font-family: Nunito;
    text-align: center;
    padding-top: 40px;
-   padding-bottom: 40px;}
+   padding-bottom: 40px;
+
+}
 
 .colFooter img{
    margin-left: 10px;
@@ -55,10 +57,10 @@ header .bg-light {
  }
 .colFooter a{color: white;
  text-decoration: none;
- te
 
 }
 .colFooter a:hover{
    color: #FA6720;
    text-decoration: none;
+
 }

@@ -1,0 +1,11 @@
+footer {
+    bottom: 0;
+    height: 100px; /* valor que necesites */
+    position: absolute;
+    width: 100%
+  }
+
+html {
+    min-height: 87%;
+    position: relative;
+  }
