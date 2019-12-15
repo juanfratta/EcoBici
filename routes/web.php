@@ -15,7 +15,7 @@ use App\Producto;
 |
 */
 
-Route::get('/', function () {
+Route::get('/inicio', function () {
     return view('inicio');
 });
 
@@ -32,7 +32,12 @@ Route::post('/nuevoproducto', 'ProductosController@crear');
 Route::post('/actualizarProducto/{id}', 'ProductosController@actualizar');
 Route::post('/guardarProducto', 'ProductosController@guardar');
 Route::get('/producto/{id}', 'ProductosController@detalle');
+
+//Edicion de caracteristicas de los productos
 Route::get('/editarProducto/{id}', 'ProductosController@editar');
+Route::post('/editarProducto/{id}', 'ProductosController@update');
+
+
 Route::get('/update/{id}', 'ProductosController@update');
 Route::post('/borrarProducto', 'ProductosController@borrar');
 

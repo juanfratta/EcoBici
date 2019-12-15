@@ -70,7 +70,7 @@ public function editar($id){
 }
 
 
-public function update($id){
+public function update(Request $request,$id){
         $producto = Producto::find($id);
         $producto->nombre = $request['nombre'];
         $producto->precio_venta = $request['precio_venta'];
@@ -80,6 +80,7 @@ public function update($id){
         $producto->save();
         return redirect("/productos");
     }
+
 
     public function borrar(Request $request){
         $id = $request["id"];

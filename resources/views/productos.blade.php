@@ -35,7 +35,7 @@
               <td>{{$producto["imagen"]}}</td>
               <td>
               <a href="producto/{{ $producto->id }}"><span class="label label-info">Ver</span></a>
-               <a href="editarProducto/{{ $producto->id }}"><span class="label label-success">Editar</span></a>
+               <a href="editarProducto/ {{$producto->id}}" ><span class="label label-success">Editar</span></a>
               </td>
               @empty
               <td>Sin especificar</td>
