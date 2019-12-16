@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="/css/styleHome.css">
 
   <main>
- 
+
+{{-- {{ dd($productos)}}     --}}
+
+
     <!--Acá empieza el slide-->
     <div class="slidePpal row" style="margin-right: 0px;margin-left: 0px;">
     <div class="slide col-12" style="padding-right: 0px;padding-left: 0px;">
@@ -62,8 +65,9 @@
   <div class="listabox row">
 
  <!--PRODUCTO-->
+ @forelse ($productos as $producto)
 
-    <article class="cajaProducto col-lg-4 col-md-12">
+      <article class="cajaProducto col-lg-4 col-md-12">
 
       <div class="cont-botones">
 
@@ -71,9 +75,11 @@
         <a href="#" class="comprar">Comprar</a>
       </div>
 
-      <img src="images/bici1.jpg" alt="bicicleta electrica mountan bike">
+      {{-- <img src="/storage/x1DhGg2IaExB2a4yTO4hsIcgKeRY3aen9zmbNEAv.jpeg"> --}}
+      {{-- {{dd($producto->imagen)}} --}}
+      <img src="/storage/{{$producto->imagen}}">
 
-      <h6 class="nombreProducto">Mountain bike</h6>
+      <h6 class="nombreProducto">{{$producto["nombre"]}}</h6>
 
     <!--MODAL-->
 
@@ -81,13 +87,17 @@
 
           <div>
         		<a href="#close" title="Close" class="close">X</a>
-        		<h2>modelo de la bici</h2>
-            <img src="images/bici1.jpg" alt="bicicleta electrica mountan bike">
-        		<h3>$50.000</h3>
-        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        		<h2>{{$producto["nombre"]}}</h2>
+            <img src="/storage/{{$producto->imagen}}">
+        		<h3>{{$producto["precio"]}}</h3>
+        		<p>{{$producto["descripcion"]}}</p>
         	</div>
         </div>
     </article>
+  @empty
+  <td>No hay articulo para mostrar</td>
+  @endforelse
+
 
   </div>
     </section>

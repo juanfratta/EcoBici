@@ -41,10 +41,10 @@ public function crear(Request $request){
 
     $archivo = $request['imagen'];
     $rutaImagen = $archivo->store('public');
-    $Imagen = basename($rutaImagen);
+    $imagen = basename($rutaImagen);
 
     $nuevoProducto = new Producto();
-    $nuevoProducto->imagen =$rutaImagen;
+    $nuevoProducto->imagen = $imagen;
     $nuevoProducto->nombre = $request['nombre'];
     $nuevoProducto->precio= $request['precio'];
     //$nuevoProducto->precio_compra =$request['precio_compra'];
@@ -62,11 +62,11 @@ public function listado(){
 
 
 
-/*public function todosLosProductos(){
+public function listadoHome(){
     $productos = Producto::all();
     $vac = compact("productos");
-    return view("inicioDinamico", $vac );
-}*/
+    return view("inicioDinamico",$vac );
+}
 
 
 

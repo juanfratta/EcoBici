@@ -287,8 +287,10 @@
   margin-top: 15px;
   margin-bottom: 20px;
   text-align: center;
-  color: #4A545E;
-  font-size: 20px;
+  color: #8CC4FF;
+  font-size: 33px;
+  letter-spacing: -0.043em;
+  -weight: 700;
 }
 
 .listaProductos h6{

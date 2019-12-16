@@ -59,9 +59,12 @@ Route::post('/productos', 'ProductosController@listado');
 
 // vistas
 
-Route::get("/", function (){
-   return view('inicioDinamico');
- });
+// Route::get("/", function (){
+// return view('inicioDinamico');
+//  });
+
+Route::get('/', 'ProductosController@listadoHome');
+
 
 
 Route::get("/preguntas",function(){
