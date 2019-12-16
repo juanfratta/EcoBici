@@ -6,6 +6,12 @@ footer {
   }
 
 html {
-    min-height: 87%;
+    /*background-color: blue;*/
+    min-height: 100%;
     position: relative;
+  }
+
+  #map{
+      height: 500px;
+      width: 500px;
   }
