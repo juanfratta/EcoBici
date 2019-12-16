@@ -17,8 +17,8 @@ public function crear(Request $request){
 
     $reglas =[
         "nombre"=>"required|string|min:5",
-        "precio_compra"=>"required|numeric|min:0",
-        "precio_venta"=>"required|numeric|min:0",
+        //"precio_compra"=>"required|numeric|min:0",
+        "precio"=>"required|numeric|min:0",
         "stock"=>"required|numeric",
         "descripcion"=>"required|string|max:256",
         "imagen"=>"required|file"
@@ -36,14 +36,18 @@ public function crear(Request $request){
 
     $this->validate($request, $reglas, $mensajes);
 
-    $ruta = $request->file("imagen")->store("public");
-    $nombreArchivo =basename($ruta);
+    //$ruta = $request->file("imagen")->store("public");
+    //$nombreArchivo =basename($ruta);
+
+    $archivo = $request['imagen'];
+    $rutaImagen = $archivo->store('public');
+    $Imagen = basename($rutaImagen);
 
     $nuevoProducto = new Producto();
-    $nuevoProducto->imagen =$nombreArchivo;
+    $nuevoProducto->imagen =$rutaImagen;
     $nuevoProducto->nombre = $request['nombre'];
-    $nuevoProducto->precio_venta = $request['precio_venta'];
-    $nuevoProducto->precio_compra =$request['precio_compra'];
+    $nuevoProducto->precio= $request['precio'];
+    //$nuevoProducto->precio_compra =$request['precio_compra'];
     $nuevoProducto->stock = $request['stock'];
     $nuevoProducto->descripcion = $request['descripcion'];
     $nuevoProducto->save();
@@ -71,10 +75,32 @@ public function editar($id){
 
 
 public function update(Request $request,$id){
+    $reglas =[
+        "nombre"=>"required|string|min:5",
+        //"precio_compra"=>"required|numeric|min:0",
+        "precio"=>"required|numeric|min:0",
+        "stock"=>"required|numeric",
+        "descripcion"=>"required|string|max:256",
+        "imagen"=>"required|file"
+
+
+    ];
+
+    $mensajes =[
+        "string"=>"El campo :attribute debe ser un texto",
+        "min"=>"El campo :attribute tiene un minimo de :min",
+        "max"=>"El campo :attribute tiene un maximo de :max",
+        "required"=>"El campo :attribute no puede quedar en blanco",
+        "file"=>"El campo :attribute debe ser un archivo de foto"
+    ];
+
+    $this->validate($request, $reglas, $mensajes);
+
+
         $producto = Producto::find($id);
         $producto->nombre = $request['nombre'];
-        $producto->precio_venta = $request['precio_venta'];
-        $producto->precio_compra =$request['precio_compra'];
+        //$producto->precio_venta = $request['precio_venta'];
+        $producto->precio =$request['precio'];
         $producto->stock = $request['stock'];
         $producto->descripcion = $request['descripcion'];
         $producto->save();
@@ -91,29 +117,5 @@ public function update(Request $request,$id){
     }
 
 
-
-    //    protected function validator(array $data)
-//    {
-//        return Validator::make($data, [
-//            'nombre' => ['required', 'string', 'max:255'],
-//            'precio_venta' => ['required', 'numeric'],
-//            'precio_compra' => ['required', 'numeric'],
-//            'stock' => ['required', 'string', 'max:255'],
-//            'descripcion' => ['required', 'string', 'max:255'],
-//        ]);
-//    }
-
-
-//    protected function create(array $data)
-//    {
-//        return Producto::create([
-//            'nombre' => $data['nombre'];
-//            'precio_venta' => $data->['precio_venta'];
-//            'precio_compra' => $data->['precio_compra'];
-//            'stock' = $data=>stock['stock'];
-//            'descripcion' => $data['descripcion'];
-//
-//            ]);
-//    }
 
 }

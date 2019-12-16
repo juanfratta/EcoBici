@@ -14,8 +14,7 @@
           <thead class="thead-dark">
             <tr>
               <th scope="col">Nombre</th>
-              <th scope="col">Precio de venta</th>
-              <th scope="col">Precio de compra</th>
+              <th scope="col">Precio</th>
               <th scope="col">Stock</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Imagen</th>
@@ -28,8 +27,7 @@
 
           <tbody>
               <td>{{$producto["nombre"]}}</td>
-              <td>{{$producto["precio_compra"]}}</td>
-              <td>{{$producto["precio_venta"]}}</td>
+              <td>{{$producto["precio"]}}</td>
               <td>{{$producto["stock"]}}</td>
               <td>{{$producto["descripcion"]}}</td>
               <td>{{$producto["imagen"]}}</td>

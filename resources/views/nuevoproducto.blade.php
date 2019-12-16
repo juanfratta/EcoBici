@@ -20,12 +20,8 @@
     <input type="text" name="nombre" class="form-control" value="{{old("nombre")}}">
     </div>
     <div class="form-group col-2">
-            <label for="precio_venta" class="control-label">Precio compra </label>
-            <input type="number" name="precio_venta" class="form-control" value="{{old("precio_venta")}}">
-    </div>
-    <div class="form-group col-2">
-            <label for="precio_compra" class="control-label">Precio venta </label>
-            <input type="number" name="precio_compra" class="form-control" value="{{old("precio_compra")}}">
+            <label for="precio" class="control-label">Precio</label>
+            <input type="number" name="precio" class="form-control" value="{{old("precio")}}">
     </div>
     <div class="form-group col-2">
             <label for="stock" class="control-label">Stock</label>
