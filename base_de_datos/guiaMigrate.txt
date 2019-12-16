@@ -1,3 +1,0 @@
-
-1. para crear el campo created_at y updated_at utilizar la siguiente sintaxis:
-"alter table users add updated_at TIMESTAMP NULL DEFAULT AFTER"

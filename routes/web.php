@@ -15,13 +15,21 @@ use App\Producto;
 |
 */
 
-Route::get('/inicio', function () {
-    return view('inicio');
-});
+
+//rutas de usuario
 
 Auth::routes();
 
+Route::get('/perfil', function(){
+    return view('auth/editarPerfil');
+});
+Route::post('/perfil', 'editProfileController@editar');
+
+//.....
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+//rutas de productos
 
 
 Route::get('/nuevoproducto', function(){
@@ -42,12 +50,7 @@ Route::get('/update/{id}', 'ProductosController@update');
 Route::post('/borrarProducto', 'ProductosController@borrar');
 
 
-
 Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar');
-
-
-
-
 
 
 Route::get('/productos', 'ProductosController@listado');
@@ -56,9 +59,10 @@ Route::post('/productos', 'ProductosController@listado');
 
 // vistas
 
- Route::get("/", function (){
-   return view('inicio');
+Route::get("/", function (){
+   return view('inicioDinamico');
  });
+
 
 Route::get("/preguntas",function(){
    return view("FAQ");

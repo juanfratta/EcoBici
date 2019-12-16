@@ -56,6 +56,17 @@ public function listado(){
     return view("productos",$vac );
 }
 
+
+
+/*public function todosLosProductos(){
+    $productos = Producto::all();
+    $vac = compact("productos");
+    return view("inicioDinamico", $vac );
+}*/
+
+
+
+
 public function detalle($id){
     $producto = Producto::find($id);
     $vac = compact("producto");
