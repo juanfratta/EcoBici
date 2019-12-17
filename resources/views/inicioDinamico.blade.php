@@ -69,34 +69,36 @@
 
       <article class="cajaProducto col-lg-4 col-md-12">
 
-      <div class="cont-botones">
+        <div class="cont-botones">
+          <a href="#openModal{{$producto->id}}" class="verProducto">Ver Más</a>
+          <a href="#" class="comprar">Agregar carrito</a>
+        </div>
 
-        <a href="#openModal" class="verProducto">Ver Más</a>
-        <a href="#" class="comprar">Comprar</a>
-      </div>
-
-      {{-- <img src="/storage/x1DhGg2IaExB2a4yTO4hsIcgKeRY3aen9zmbNEAv.jpeg"> --}}
-      {{-- {{dd($producto->imagen)}} --}}
       <img src="/storage/{{$producto->imagen}}">
 
       <h6 class="nombreProducto">{{$producto["nombre"]}}</h6>
 
-    <!--MODAL-->
+      <!--MODAL-->
 
-      <div id="openModal" class="modalDialog">
+            <div id="openModal{{$producto->id}}" class="modalDialog">
+                <div>
+                	<a href="#close" title="Close" class="close">X</a>
+                	<h2>{{$producto["nombre"]}}</h2>
+                  <img src="/storage/{{$producto->imagen}}">
+                	<h3>{{$producto["precio"]}}</h3>
+                	<p>{{$producto["descripcion"]}}</p>
+              	</div>
+              </div>
+              @auth
 
-          <div>
-        		<a href="#close" title="Close" class="close">X</a>
-        		<h2>{{$producto["nombre"]}}</h2>
-            <img src="/storage/{{$producto->imagen}}">
-        		<h3>{{$producto["precio"]}}</h3>
-        		<p>{{$producto["descripcion"]}}</p>
-        	</div>
-        </div>
+
+              @endauth
+
     </article>
   @empty
   <td>No hay articulo para mostrar</td>
   @endforelse
+
 
 
   </div>

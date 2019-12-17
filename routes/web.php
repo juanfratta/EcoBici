@@ -63,7 +63,10 @@ Route::post('/productos', 'ProductosController@listado');
 // return view('inicioDinamico');
 //  });
 
+// Route::get('/', 'ProductosController@listadoHome')->middleware('auth');
+
 Route::get('/', 'ProductosController@listadoHome');
+
 
 
 

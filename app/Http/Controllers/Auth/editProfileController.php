@@ -10,14 +10,12 @@ class editProfileController extends Controller
 {
     public function editar(Request $request){
 
-      $usuario = User::all();
+      $user = User::find(\Auth::user()->id);
 
+      $user->name = $request->name;
+      $user->email = $request->email;
 
-      $usuario->name = $request['name'];
-      $usuario->email = $request['email'];
-      $usuario->password = $request['password']
-
-      $usuario->save();
+      $user->save();
 
       return redirect('/');
     }
