@@ -38,7 +38,7 @@
       <!--lista de productos-->
     <!--<aside class="listaProductos col-md-2 d-none d-md-block">
         <h6>CATEGORIAS</h6>
-          <!--<ul>
+          <!<ul>
           <li><a href="#">Biciletas</a> </li>
           <li><a href="#">Monopatines</a> </li>
           <li><a href="#">Kits</a> </li>
@@ -70,8 +70,18 @@
       <article class="cajaProducto col-lg-4 col-md-12">
 
         <div class="cont-botones">
+
           <a href="#openModal{{$producto->id}}" class="verProducto">Ver Más</a>
-          <a href="#" class="comprar">Agregar carrito</a>
+
+          @guest
+            <a href="/login" class="comprar">Agregar carrito</a>
+          @endguest
+
+
+          @auth
+            <a href="/preguntas" class="comprar">Agregar carrito</a>
+          @endauth
+
         </div>
 
       <img src="/storage/{{$producto->imagen}}">
@@ -90,7 +100,6 @@
               	</div>
               </div>
               @auth
-
 
               @endauth
 

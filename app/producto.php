@@ -14,4 +14,9 @@ class Producto extends Model
    public $table= "productos";
    public $guarded =[];
 
-}
+   public function carritos(){
+     return $this.belongsToMany("App/carrito", "carrito_producto", "producto_id", "carrito_id" );
+   }
+
+
+ }
