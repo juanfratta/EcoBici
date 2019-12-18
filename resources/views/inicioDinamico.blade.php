@@ -79,7 +79,7 @@
 
 
           @auth
-            <a href="/preguntas" class="comprar">Agregar carrito</a>
+            <a href="/carrito" class="comprar">Agregar carrito</a>
           @endauth
 
         </div>
@@ -95,7 +95,7 @@
                 	<a href="#close" title="Close" class="close">X</a>
                 	<h2>{{$producto["nombre"]}}</h2>
                   <img src="/storage/{{$producto->imagen}}">
-                	<h3>{{$producto["precio"]}}</h3>
+                	<h3 style="color:orange"><b>${{$producto["precio"]}}</b></h3>
                 	<p>{{$producto["descripcion"]}}</p>
               	</div>
               </div>
@@ -111,6 +111,10 @@
 
 
   </div>
+  <div class="paginate">
+    {{$productos->links()}}
+  </div>
+
     </section>
   </div>
 </main>

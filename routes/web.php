@@ -29,6 +29,8 @@ Route::post('/perfil', 'editProfileController@editar');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 //rutas de productos
 
 
@@ -73,3 +75,5 @@ Route::get('/', 'ProductosController@listadoHome');
 Route::get("/preguntas",function(){
    return view("FAQ");
 });
+
+Route::get("/carrito", "CarritoController@agregarProductos");

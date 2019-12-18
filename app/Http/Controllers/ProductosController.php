@@ -63,7 +63,7 @@ public function listado(){
 
 
 public function listadoHome(){
-    $productos = Producto::all();
+    $productos = Producto::paginate(6);
     $vac = compact("productos");
     return view("inicioDinamico",$vac );
 }

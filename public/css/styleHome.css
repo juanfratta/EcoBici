@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
   box-sizing: border-box;
   padding-left: 0px;
@@ -25,15 +24,6 @@
   background: #00c3ffb3;
 }
 
-/*  .listaProductos{
-    background: #4A545E;
-    height: auto;
-    padding-left: 5px;
-}
-
-/*#efectivo{
-  background: #4FA4FF;
-}*/
 
 .productosDestacados{
   text-align: center;
@@ -52,56 +42,6 @@
 
 }
 
-/*.listaProductos h6{
-  text-align: center;
-  margin-top: 30px;
-  padding-bottom: 20px;
-  color: white;
-  font-weight: 400;
-  font-family: Montserrat, sans sans-serif;
-  font-size: 14px;
-}
-
-.listaProductos ul{
-  padding-left: 10px;
-  list-style: none;
-}
-
-.listaProductos li{
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: white;
-}
-
-.listaProductos a{
-  font-family: Montserrat, sans-serif;
-  color: white;
-  font-size: 14px;
-}
-
-.listaProductos a:hover{
-  color: orange;
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.mediosDePago{
-  margin-top: 80px;
-}
-
-.mediosDePago ul li {
-  color: #42E0EB;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-
-.listabox div img{
-  height: 90%;
-  width: 100%;
-}*/
 
 .cajaProducto{display: flex;
   flex-direction: column-reverse;
@@ -298,7 +238,7 @@
   -weight: 700;
 }
 
-.listaProductos h6{
+/* .listaProductos h6{
   text-align: center;
   margin-top: 30px;
   padding-bottom: 20px;
@@ -331,7 +271,7 @@
   color: orange;
   text-decoration: none;
   font-size: 15px;
-}
+} */
 
 .mediosDePago{
   margin-top: 80px;
@@ -414,12 +354,25 @@
   width: 23%;
   height: auto;
 }
+.paginate{
+display: flex;
 
+justify-content: center;
+}
+
+.cart{
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-size: 16px;
+  line-height: 17px;
+  letter-spacing: 0.275em;
+  font-weight: 200;
+}
 
 
 
  /* comienzo css footer*/
- footer .colFooter{background: #4A545E;
+ /* footer .colFooter{background: #4A545E;
   color: white;
   font-size: 13px;
   font-weight: bold;
@@ -441,11 +394,11 @@ te
 .colFooter a:hover{
   color: #FA6720;
   text-decoration: none;
-}
+} */
 /*fin css del footer*/
 
 /*principio css de header*/
-.navbar-brand{
+/* .navbar-brand{
   margin-left: 50px;
   font-family:'Playfair Display', serif;
   }
@@ -465,6 +418,4 @@ color: white!important;
   flex-flow: row-reverse;}
 
 .navbar-light .navbar-nav .nav-link {
-  color: white!important;}
-
->>>>>>> 38077e9042de1f1ff156cf7a292854bda0e2c9c6
+  color: white!important;} */
