@@ -1,13 +1,14 @@
 @extends('layouts.template')
 @section('content')
   <div class="container">
+      
       <div class="row justify-content-center">
           <div class="col-md-6">
               <div class="card">
                   <div class="card-header"><h5>{{ __('Editar Perfil') }}</h5></div>
 
                   {{-- {{dd(auth()->user()->avatar)}} --}}
-                  <img src="/store/{{auth()->user()->avatar}}" alt="">
+
 
                   <div class="card-body">
                       <form method="POST" action="/perfil" enctype="multipart/form-data">

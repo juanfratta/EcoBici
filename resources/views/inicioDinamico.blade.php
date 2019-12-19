@@ -64,6 +64,7 @@
   </div>
   <div class="listabox row">
 
+
  <!--PRODUCTO-->
  @forelse ($productos as $producto)
 
@@ -71,16 +72,19 @@
 
         <div class="cont-botones">
 
-          <a href="#openModal{{$producto->id}}" class="verProducto">Ver Más</a>
+        <a href="#openModal{{$producto->id}}" class="verProducto">Ver Más</a>
+
 
           @guest
-            <a href="/login" class="comprar">Agregar carrito</a>
+            <a href="/login" class="comprar">Add to cart</a>
+
+          @else
+                  <form action="carrito/{{$producto['id']}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$producto->id}}">
+                    <button class="boton-agregar" type="submit" name="button">Add to cart</button>
+                  </form>
           @endguest
-
-
-          @auth
-            <a href="/carrito" class="comprar">Agregar carrito</a>
-          @endauth
 
         </div>
 
@@ -99,13 +103,11 @@
                 	<p>{{$producto["descripcion"]}}</p>
               	</div>
               </div>
-              @auth
 
-              @endauth
 
     </article>
   @empty
-  <td>No hay articulo para mostrar</td>
+  <td>No hay articulos para mostrar</td>
   @endforelse
 
 
