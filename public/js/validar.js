@@ -13,7 +13,7 @@ console.log("Prueba validar");
 
 
 
-
+//REGISTER
 campoNOmbre.onblur = function() {
     if(this.value.trim()==''){
 
@@ -80,6 +80,69 @@ passwordConfirm.onblur = function() {
     }else{
         boton.disabled = false;
         passwordConfirm.style.background='green';
+    }
+}
+
+//NUEVO Producto
+var campoNombre = document.querySelector('input[name=nombre]');
+var campoPrecio = document.querySelector('input[name=precio]');
+var campoStock = document.querySelector('input[name=stock]');
+var campoDescripcion = document.querySelector('input[name=descripcion]');
+
+
+campoNombre.onblur = function() {
+    if(this.value.trim()==''){
+
+        alert("El campo nombre no puede estar vacio");
+        campoNombre.style.background='red';
+        boton.setAttribute("disabled", "");
+        }
+        else
+        {
+        boton.disabled = false;
+        campoNombre.style.background='green';
+    }
+}
+
+
+
+campoPrecio.onblur = function() {
+    if(this.value.trim()==''){
+        alert("El campo precio no puede estar vacio");
+        campoPrecio.style.background='red';
+        boton.setAttribute("disabled", "");
+    }
+    else
+    {
+        boton.disabled = false;
+        campoPrecio.style.background='green';
+    }
+}
+
+campoStock.onblur = function() {
+    if(this.value.trim()==''){
+        alert("El campo stock no puede estar vacio");
+        campoStock.style.background='red';
+        boton.setAttribute("disabled", "");
+    }
+    else
+    {
+        boton.disabled = false;
+        campoStock.style.background='green';
+    }
+}
+
+
+campoDescripcion.onblur = function() {
+    if(this.value.trim()==''){
+        alert("El campo descripcion no puede estar vacio");
+        campoDescripcion.style.background='red';
+        boton.setAttribute("disabled", "");
+    }
+    else
+    {
+        boton.disabled = false;
+        campoDescripcion.style.background='green';
     }
 }
 

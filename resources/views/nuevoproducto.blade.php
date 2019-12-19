@@ -40,7 +40,7 @@
 
 </div>
 <div style="padding-left:27px" class="row col-12">
-        <button type="submit" class="btn btn-success">
+        <button id="boton" type="submit" class="btn btn-success">
                 Confirmar
         </button>
 </div>
@@ -48,5 +48,7 @@
 </form>
 </div>
 </div>
+
+<script src="/js/validar.js"></script>
 
 @endsection
