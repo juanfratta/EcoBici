@@ -31,6 +31,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
 //rutas de productos
 
 
@@ -76,4 +77,10 @@ Route::get("/preguntas",function(){
    return view("FAQ");
 });
 
-Route::get("/carrito", "CarritoController@agregarProductos");
+
+//rutas carrito
+Route::get("carrito", function(){
+  return view ("carrito");
+})->middleware('auth');
+Route::post('carrito/{productId}', 'CarritoController@agregarProductos');
+//Route::post('carrito/{productId}', 'CarritoController@comprarProductos');
