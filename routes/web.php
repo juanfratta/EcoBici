@@ -37,27 +37,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/nuevoproducto', function(){
   return view("nuevoproducto");
-});
-Route::post('/nuevoproducto', 'ProductosController@crear');
+})->middleware('auth');
+Route::post('/nuevoproducto', 'ProductosController@crear')->middleware('auth');
 //update
-Route::post('/actualizarProducto/{id}', 'ProductosController@actualizar');
-Route::post('/guardarProducto', 'ProductosController@guardar');
-Route::get('/producto/{id}', 'ProductosController@detalle');
+Route::post('/actualizarProducto/{id}', 'ProductosController@actualizar')->middleware('auth');
+Route::post('/guardarProducto', 'ProductosController@guardar')->middleware('auth');
+Route::get('/producto/{id}', 'ProductosController@detalle')->middleware('auth');
 
 //Edicion de caracteristicas de los productos
-Route::get('/editarProducto/{id}', 'ProductosController@editar');
-Route::post('/editarProducto/{id}', 'ProductosController@update');
+Route::get('/editarProducto/{id}', 'ProductosController@editar')->middleware('auth');
+Route::post('/editarProducto/{id}', 'ProductosController@update')->middleware('auth');
 
 
-Route::get('/update/{id}', 'ProductosController@update');
-Route::post('/borrarProducto', 'ProductosController@borrar');
+Route::get('/update/{id}', 'ProductosController@update')->middleware('auth');
+Route::post('/borrarProducto', 'ProductosController@borrar')->middleware('auth');
 
 
-Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar');
+Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar')->middleware('auth');
 
 
-Route::get('/productos', 'ProductosController@listado');
-Route::post('/productos', 'ProductosController@listado');
+Route::get('/productos', 'ProductosController@listado')->middleware('auth');
+Route::post('/productos', 'ProductosController@listado')->middleware('auth');
 
 
 // vistas
