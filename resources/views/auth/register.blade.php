@@ -1,6 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -8,7 +9,7 @@
                 <div class="card-header"><h5>{{ __('Registrarse') }}</h5></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="form-group row">
@@ -74,8 +75,8 @@
                             </div>
                         </div>
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div id="boton" class="col-md-6 offset-md-4">
+                                <button id="boton" type="submit" class="btn btn-primary">
                                     {{ __('Enviar') }}
                                 </button>
 
@@ -87,4 +88,6 @@
         </div>
     </div>
 </div>
+<script src="/js/validar.js"></script>
+
 @endsection

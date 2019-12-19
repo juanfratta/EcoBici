@@ -51,6 +51,7 @@ public function crear(Request $request){
     $nuevoProducto->stock = $request['stock'];
     $nuevoProducto->descripcion = $request['descripcion'];
     $nuevoProducto->save();
+
     return redirect("/nuevoproducto");
 }
 
