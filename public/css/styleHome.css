@@ -386,8 +386,10 @@ justify-content: center;
 }
 
 .cart{
-  margin-top: 8%;
-  margin-bottom: 8%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  margin-bottom: 15%;
   font-size: 16px;
   line-height: 17px;
   letter-spacing: 0.275em;

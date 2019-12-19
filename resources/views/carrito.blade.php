@@ -2,34 +2,37 @@
 @section('content')
   <link rel="stylesheet" href="/css/styleHome.css">
 
-<main class="row">
-<div class= "cart col-md-5 offset-md-3">
-    <table class="table table-borderless">
-    <thead>
-      <tr>
-        <th scope="col">#item</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Precio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td></td>
-        <td>123</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>123132</td>
-        </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry the Bird</td>
-        <td>123132</td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="cart">
+  <div class="col-md-5">
+    <h3>Bancá! Estamos trabajando en tu carrito... </h3>
+
+    {{-- <h2>Carrito:</h2>
+    <br>
+    <br>
+
+    <p>Orden N: {{$carrito[0]->id}}</p>
+
+    @forelse ($productos as $producto)
+      <ul>
+        {{dd($productos)}}
+        <li>{{$productos[2]->producto_id}}</li>
+      </ul>
+
+
+    @empty
+      <p>No Hay articulo en el carrito!
+      <br>Comprá, no seas canuto...</p>
+    @endforelse --}}
+
+  </div>
+</div>
+
+
+
+
+
+
 </div>
 
 </main>

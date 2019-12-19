@@ -83,4 +83,4 @@ Route::get("carrito", function(){
   return view ("carrito");
 })->middleware('auth');
 Route::post('carrito/{productId}', 'CarritoController@agregarProductos');
-//Route::post('carrito/{productId}', 'CarritoController@comprarProductos');
+Route::get('carrito', 'CarritoController@ventasEnCarrito');

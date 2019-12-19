@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container-fluid">
-<script src="/js/mapa.js"></script>
-<!--<div  id="foot1" class="colFooter col-lg-4 col-md-12"></div>-->
+{{-- <script src="/js/mapa.js"></script>
+<div  id="foot1" class="colFooter col-lg-4 col-md-12"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
-<div class="container-fluid">
+<div class="container-fluid"> --}}
 
 
 <div class="col-md-12 centered">

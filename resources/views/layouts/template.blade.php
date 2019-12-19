@@ -58,6 +58,21 @@
                  </li>
 
              @endguest
+             @auth
+               <li class="nav-item">
+                 <a class="nav-link" href="/carrito"><img class="redes" src="images/carrito.png" alt="carrito" width="35px;" height="35px;">
+                 </a>
+               </li>
+             @endauth
+             {{-- @auth ('admin')
+               <li class="nav-item">
+                 <a class="nav-link" href="/preguntas">Cargar productos</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="/preguntas">Editar productos</a>
+               </li>
+
+             @endauth --}}
              </ul>
          </div>
        </nav>

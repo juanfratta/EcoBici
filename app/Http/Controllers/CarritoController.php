@@ -13,35 +13,40 @@ class CarritoController extends Controller
 {
 
 
-    public function agregarProductos($id){
+public function agregarProductos($id){
 
-//traer carrito
+//traer carrito si esta activo
 
-    $carrito = carrito::where('user_id', '=', Auth::user()->id)->where('activo', '1')->get();
+$carrito = carrito::where('user_id', '=', Auth::user()->id)->where('activo', '1')->get();
 
-// crear carrito (no funciona si le pongo el if para setear un solo usuario por carrito)
-  if(!$carrito){
+// crear carrito en caso de que no este activo
+
+if($carrito->isEmpty()){
     $carrito= new carrito();
     $carrito->user_id = Auth::user()->id;
     $carrito->activo = '1';
     $carrito->save();
 
-  } else{
-      $carrito = carrito::where('user_id', '=', Auth::user()->id)->where('activo', '1')->get();
-
-  }
+    }
 
   // //agrego los productos
 
     $productoEnCarrito = new carrito_producto();
-
-    $productoEnCarrito->carrito_id= $carrito->id;
+    $productoEnCarrito->carrito_id= $carrito[0]->id;
     $productoEnCarrito->producto_id = $id;
     $productoEnCarrito->save();
-
-    return redirect('/');
-
+  return redirect('/');
 
   }
 
-}
+  public function ventasEnCarrito(){
+    $carrito = carrito::where('user_id', '=', Auth::user()->id)
+    ->where('activo', '1')->get();
+    $productos = carrito_producto::where('carrito_id', '=', $carrito[0]->id)->get();
+    $vac = compact("carrito", "productos");
+    return view("carrito", $vac );
+    }
+
+
+
+  }

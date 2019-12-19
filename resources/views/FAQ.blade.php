@@ -109,7 +109,8 @@
               y que los componentes eléctricos son cada vez mejores y mas baratos.
               Cualquier momento es bueno.
            </p>
-         </article>
+          </article>
+
        </div>
 
      @endsection

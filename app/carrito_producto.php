@@ -10,8 +10,5 @@ class carrito_producto extends Model
   public $guarded = [""];
   public $fillable = ['carrito_id', 'producto_id', 'cantidad'];
 
-  public function productos(){
-    return $this->belongsToMany('App\producto');
-  }
 
-}
+  }
