@@ -14,73 +14,66 @@ use App\Producto;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//RUTA HOME
+Route::get('/', function(){
+    return view('inicio');
+});
 
 
-//rutas de usuario
+//RUTAS USURARIO
 
 Auth::routes();
 
 Route::get('/perfil', function(){
     return view('auth/editarPerfil');
 });
-Route::post('/perfil', 'editProfileController@editar');
+Route::post('/perfil', 'editProfileController@editar');//.....
 
-//.....
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+//RUTAS CARRITO
 
-//rutas de productos
+Route::get('/carrito', 'CartController@index')->name('cart')->middleware('auth');
+
+Route::post('/cart/{productId}', 'CartController@addProduct')->name('addProductToCart');
+
+Route::delete('/cart/{productId}', 'CartController@removeProduct')->name('removeProductFromCart');
+
+Route::view('/ordenes', 'orders')->name('orders')->middleware('auth');
+
+Route::post('/orders', 'OrdersController@addOrder')->name('order');
+
+
+
+//RUTAS PRODUCTOS
 
 
 Route::get('/nuevoproducto', function(){
   return view("nuevoproducto");
 })->middleware('auth');
-Route::post('/nuevoproducto', 'ProductosController@crear')->middleware('auth');
+Route::post('/nuevoproducto', 'ProductController@crear')->middleware('auth');
 //update
-Route::post('/actualizarProducto/{id}', 'ProductosController@actualizar')->middleware('auth');
-Route::post('/guardarProducto', 'ProductosController@guardar')->middleware('auth');
-Route::get('/producto/{id}', 'ProductosController@detalle')->middleware('auth');
+Route::post('/actualizarProducto/{id}', 'ProductController@actualizar')->middleware('auth');
+Route::post('/guardarProducto', 'ProductController@guardar')->middleware('auth');
+Route::get('/producto/{id}', 'ProductController@detalle')->middleware('auth');
 
 //Edicion de caracteristicas de los productos
-Route::get('/editarProducto/{id}', 'ProductosController@editar')->middleware('auth');
-Route::post('/editarProducto/{id}', 'ProductosController@update')->middleware('auth');
+Route::get('/editarProducto/{id}', 'ProductController@editar')->middleware('auth');
+Route::post('/editarProducto/{id}', 'ProductController@update')->middleware('auth');
 
+Route::get('/update/{id}', 'ProductController@update')->middleware('auth');
+Route::post('/borrarProducto', 'ProductController@borrar')->middleware('auth');
 
-Route::get('/update/{id}', 'ProductosController@update')->middleware('auth');
-Route::post('/borrarProducto', 'ProductosController@borrar')->middleware('auth');
+Route::get('/eliminarProducto/{id}', 'ProductController@eliminar')->middleware('auth');
 
+Route::get('/productos', 'ProductController@listado')->middleware('auth');
+Route::post('/productos', 'ProductController@listado')->middleware('auth');
 
-Route::get('/eliminarProducto/{id}', 'ProductosController@eliminar')->middleware('auth');
-
-
-Route::get('/productos', 'ProductosController@listado')->middleware('auth');
-Route::post('/productos', 'ProductosController@listado')->middleware('auth');
-
-
-// vistas
-
-// Route::get("/", function (){
-// return view('inicioDinamico');
-//  });
-
-// Route::get('/', 'ProductosController@listadoHome')->middleware('auth');
-
-Route::get('/', 'ProductosController@listadoHome');
-
-
+Route::get('/', 'ProductController@listadoHome');
 
 
 Route::get("/preguntas",function(){
    return view("FAQ");
 });
-
-
-//rutas carrito
-Route::get("carrito", function(){
-  return view ("carrito");
-})->middleware('auth');
-Route::post('carrito/{productId}', 'CarritoController@agregarProductos');
-Route::get('carrito', 'CarritoController@ventasEnCarrito');

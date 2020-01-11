@@ -40,13 +40,15 @@ header .bg-light {
 
 }
 
-   footer .colFooter{background: #4A545E;
+   footer .colFooter{
+  background: #4A545E;
    color: white;
    font-size: 14px;
    font-family: Nunito;
    text-align: center;
    padding-top: 40px;
    padding-bottom: 40px;
+
 
 }
 

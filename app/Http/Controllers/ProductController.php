@@ -4,24 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\producto;
+use App\Product;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class ProductosController extends Controller
+class ProductController extends Controller
 {
 
 //Siempre de un form reciben request
 public function crear(Request $request){
 
     $reglas =[
-        "nombre"=>"required|string|min:5",
-        //"precio_compra"=>"required|numeric|min:0",
-        "precio"=>"required|numeric|min:0",
-        "stock"=>"required|numeric",
-        "descripcion"=>"required|string|max:256",
-        "imagen"=>"required|file"
+        "name"=>"required|string|min:5",
+        "price"=>"required|numeric",
+        "description"=>"required|string|max:256",
+        "imageUrl"=>"required|file"
 
 
     ];
@@ -36,51 +34,45 @@ public function crear(Request $request){
 
     $this->validate($request, $reglas, $mensajes);
 
-    //$ruta = $request->file("imagen")->store("public");
-    //$nombreArchivo =basename($ruta);
+    //$ruta = $request->file("imageUrl")->store("public");
+    //$nameArchivo =basename($ruta);
 
-    $archivo = $request['imagen'];
-    $rutaImagen = $archivo->store('public');
-    $imagen = basename($rutaImagen);
+    $archivo = $request['imageUrl'];
+    $rutaimageUrl = $archivo->store('public');
+    $imageUrl = basename($rutaimageUrl);
 
-    $nuevoProducto = new Producto();
-    $nuevoProducto->imagen = $imagen;
-    $nuevoProducto->nombre = $request['nombre'];
-    $nuevoProducto->precio= $request['precio'];
-    //$nuevoProducto->precio_compra =$request['precio_compra'];
-    $nuevoProducto->stock = $request['stock'];
-    $nuevoProducto->descripcion = $request['descripcion'];
+    $nuevoProducto = new Product();
+    $nuevoProducto->imageUrl = $imageUrl;
+    $nuevoProducto->name = $request['name'];
+    $nuevoProducto->price= $request['price'];
+    $nuevoProducto->description = $request['description'];
     $nuevoProducto->save();
 
     return redirect("/nuevoproducto");
 }
 
 public function listado(){
-    $productos = Producto::all();
+    $productos = Product::all();
     $vac = compact("productos");
     return view("productos",$vac );
 }
 
 
-
 public function listadoHome(){
-    $productos = Producto::paginate(6);
+    $productos = Product::paginate(6);
     $vac = compact("productos");
-    return view("inicioDinamico",$vac );
+    return view("inicio",$vac );
 }
 
 
-
-
 public function detalle($id){
-    $producto = Producto::find($id);
+    $producto = Product::find($id);
     $vac = compact("producto");
-    //esto crea la vista directamente.
     return view('producto',$vac);
 }
 
 public function editar($id){
-        $producto = Producto::find($id);
+        $producto = Product::find($id);
         $vac = compact("producto");
         return view('editarProducto',$vac);
 }
@@ -88,12 +80,10 @@ public function editar($id){
 
 public function update(Request $request,$id){
     $reglas =[
-        "nombre"=>"required|string|min:5",
-        //"precio_compra"=>"required|numeric|min:0",
-        "precio"=>"required|numeric|min:0",
-        "stock"=>"required|numeric",
-        "descripcion"=>"required|string|max:256",
-        "imagen"=>"required|file"
+        "name"=>"required|string|min:5",
+        "price"=>"required|numeric|min:0",
+        "description"=>"required|string|max:256",
+        "imageUrl"=>"required|file"
 
 
     ];
@@ -109,12 +99,10 @@ public function update(Request $request,$id){
     $this->validate($request, $reglas, $mensajes);
 
 
-        $producto = Producto::find($id);
-        $producto->nombre = $request['nombre'];
-        //$producto->precio_venta = $request['precio_venta'];
-        $producto->precio =$request['precio'];
-        $producto->stock = $request['stock'];
-        $producto->descripcion = $request['descripcion'];
+        $producto = Product::find($id);
+        $producto->name = $request['name'];
+        $producto->price =$request['price'];
+        $producto->description = $request['description'];
         $producto->save();
         return redirect("/productos");
     }
@@ -122,7 +110,7 @@ public function update(Request $request,$id){
 
     public function borrar(Request $request){
         $id = $request["id"];
-        $producto = Producto::find($id);
+        $producto = Product::find($id);
         $producto->delete();
 
         return redirect("/productos");

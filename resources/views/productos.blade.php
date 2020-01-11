@@ -1,44 +1,37 @@
-
-
-
-  @extends('layouts.template')
+@extends('layouts.template')
 
 @section('content')
 
-
-  <link rel="stylesheet" href="/css/productos.css">
-
-
-
+<div class="container form-carrito">
+  <div class="carrito col-6">
         <table class="table">
           <thead class="thead-dark">
             <tr>
+              <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Precio</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Imagen</th>
               <th scope="col">Accion</th>
-
-
             </tr>
           </thead>
           @forelse ($productos as $producto)
 
           <tbody>
-              <td>{{$producto["nombre"]}}</td>
-              <td>{{$producto["precio"]}}</td>
-              <td>{{$producto["stock"]}}</td>
-              <td>{{$producto["descripcion"]}}</td>
-              <td>{{$producto["imagen"]}}</td>
+              <td><img class="imagen-producto" src="storage/{{$producto->imageUrl}}"</td>
+              <td><p class='title-product'>{{$producto["name"]}}</p></td>
+              <td>${{$producto["price"]}}</td>
               <td>
-              <a href="producto/{{ $producto->id }}"><span class="label label-info">Ver</span></a>
-               <a href="editarProducto/ {{$producto->id}}" ><span class="label label-success">Editar</span></a>
+              <a href="producto/{{ $producto->id }}">
+              <button type="button" class="btn btn-info">Ver +</button></a>
+              <br>
+              <br>
+              <a href="editarProducto/ {{$producto->id}}">
+              <button type="button" class="btn btn-success editar-2">Editar</button></a>
               </td>
               @empty
               <td>Sin especificar</td>
               @endforelse
           </tbody>
         </table>
-
+      </div>
+</div>
 @endsection
